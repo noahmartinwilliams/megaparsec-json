@@ -5,15 +5,15 @@ import Text.Megaparsec
 import Text.Megaparsec.Char
 import Text.Megaparsec.JSON.Types
 
-jsonInt :: JSONParser Int
+jsonInt :: JSONParser JSONObj
 jsonInt = do
     i <- some (digitChar)
     notFollowedBy (single '.')
-    return (read i :: Int)
+    return (JSONInt (read i :: Int))
 
-jsonFloat :: JSONParser Double
+jsonFloat :: JSONParser JSONObj
 jsonFloat = do
     i1 <- some digitChar
     void $ single '.'
     i2 <- some digitChar
-    return (read (i1 ++ ('.' : i2)) :: Double)
+    return (JSONFloat (read (i1 ++ ('.' : i2)) :: Double))
