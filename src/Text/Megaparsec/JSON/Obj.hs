@@ -9,8 +9,13 @@ import Text.Megaparsec.JSON.Space
 import Text.Megaparsec.JSON.String
 import Text.Megaparsec.JSON.Types
 
+jsonStringThing :: JSONParser JSONObj
+jsonStringThing = do
+    str <- sc (jsonString)
+    return (JSONString str)
+
 jsonThing :: JSONParser JSONObj
-jsonThing = (try (sc jsonFloat) <|> try (sc jsonInt) <|> try (sc jsonList) <|> try (sc jsonObj))
+jsonThing = (try (sc jsonFloat) <|> try (sc jsonInt) <|> try (sc jsonList) <|> try (sc jsonObj) <|> try (sc jsonStringThing))
 
 jsonEntry :: JSONParser (String, JSONObj)
 jsonEntry = do

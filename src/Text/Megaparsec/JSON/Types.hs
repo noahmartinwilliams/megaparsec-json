@@ -6,4 +6,4 @@ import Text.Megaparsec
 
 type JSONParser = Parsec Void String
 
-data JSONObj = JSONObj (Map String JSONObj) | JSONInt Int | JSONFloat Double | JSONList [JSONObj] deriving(Show, Eq)
+data JSONObj = JSONObj (Map String JSONObj) | JSONInt Int | JSONFloat Double | JSONList [JSONObj] | JSONString String deriving(Show, Eq)
