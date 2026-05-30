@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Text.Megaparsec.JSON.Number
       Text.Megaparsec.JSON.String
       Text.Megaparsec.JSON.Types
   other-modules:
