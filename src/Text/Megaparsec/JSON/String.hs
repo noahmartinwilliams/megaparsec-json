@@ -14,5 +14,6 @@ jsonString = do
             (char 'n' >> return '\n') <|>
             (char 't' >> return '\t') <|>
             (char '"' >> return '"' ) <|>
-            (char '\\' >> return '\\')
+            (char '\\' >> return '\\') <|>
+            (char '/' >> return '/' )
 
